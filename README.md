@@ -115,3 +115,117 @@ customers
 
 The project followed an end-to-end analytics workflow:
 
+```text
+
+Raw Data
+   ↓
+PostgreSQL Database
+   ↓
+Data Cleaning & Validation
+   ↓
+SQL Business Analysis
+   ↓
+Power BI Data Model
+   ↓
+DAX Measures
+   ↓
+Interactive Dashboard
+   ↓
+Business Insights
+
+```
+
+### 📊 SQL Analysis
+
+PostgreSQL was used to answer a series of business questions covering sales, customers, products, sellers, delivery, reviews, and operational performance.
+
+The SQL analysis includes:
+
+Sales & Revenue Analysis
+Monthly revenue trends
+Revenue by product category
+Revenue by customer state
+Average Order Value
+Order volume analysis
+Revenue and freight comparison
+Product & Category Analysis
+Top product categories by revenue
+Top product categories by order volume
+High-revenue categories
+Low-rated high-revenue categories
+Product category performance comparison
+Customer Analysis
+Total customers
+One-time vs repeat customers
+Repeat customer analysis
+Customer growth over time
+Monthly customer activity
+Order growth over time
+Seller Analysis
+Top sellers by revenue
+Seller performance comparison
+Seller contribution to overall sales
+Delivery & Customer Experience
+Average delivery time
+Delivery performance by state
+Relationship between delivery time and customer reviews
+Customer review score analysis
+Business Opportunity Analysis
+
+The final SQL analysis combines multiple business metrics to identify categories and areas with potential for improvement, including:
+
+High revenue + high order volume
+High revenue + low customer ratings
+Strong customer satisfaction + lower revenue
+High delivery time
+High freight burden
+📈 Power BI Dashboard
+
+The final dashboard contains two pages designed for different business perspectives.
+
+## Page 1 — E-Commerce Sales & Performance Overview
+
+The first page provides an executive-level overview of overall business performance.
+
+Key Performance Indicators
+Total Revenue
+Total Orders
+Total Freight
+Total Customers
+Average Order Value
+Average Review Score
+Visualizations
+Total Revenue by Year
+Total Revenue by Product Category
+Total Revenue by State
+
+This page is designed to provide a quick understanding of the overall health and performance of the e-commerce business.
+
+## Page 2 — Customer & Business Insights
+
+The second page focuses on customer behavior, seller performance, delivery operations, and product-level insights.
+
+Key Metrics
+Average Delivery Days
+Total Sellers
+Visualizations
+Orders by Product Category
+Total Revenue by Seller
+Revenue vs Customer Rating by Category
+Average Delivery Days by State
+Interactive Filters
+
+The dashboard includes interactive slicers for:
+
+Customer State
+Year
+Product Category
+
+Slicers are synchronized across the dashboard so that selections can be used to analyze the business from different perspectives.
+
+### 📌 Key DAX Measures
+
+Some of the main Power BI measures used in the dashboard include:
+
+Total Revenue
+
