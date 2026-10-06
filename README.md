@@ -227,5 +227,268 @@ Slicers are synchronized across the dashboard so that selections can be used to 
 
 Some of the main Power BI measures used in the dashboard include:
 
-Total Revenue
+## Total Revenue
 
+```text
+
+Total Revenue =
+CALCULATE(
+    SUM(order_items[price]),
+    orders[order_status] = "delivered"
+)
+```
+
+## Total Orders
+
+```text
+Total Orders =
+CALCULATE(
+    DISTINCTCOUNT(orders[order_id]),
+    orders[order_status] = "delivered"
+)
+```
+
+## Total Customers
+
+```text
+Total Customers =
+DISTINCTCOUNT(orders[customer_id])
+```
+
+## Average Order Value
+
+``` text
+Average Order Value =
+DIVIDE(
+    [Total Revenue],
+    [Total Orders]
+)
+```
+
+## Total Freight
+
+``` text
+Total Freight =
+CALCULATE(
+    SUM(order_items[freight_value]),
+    orders[order_status] = "delivered"
+)
+```
+
+## Average Review Score
+
+```text
+Average Review Score =
+AVERAGE(order_reviews[review_score])
+```
+
+## Average Delivery Days
+
+```text
+Average Delivery Days =
+AVERAGEX(
+    FILTER(
+        orders,
+        orders[order_status] = "delivered"
+            && NOT ISBLANK(orders[order_delivered_customer_date])
+            && NOT ISBLANK(orders[order_purchase_timestamp])
+    ),
+    DATEDIFF(
+        orders[order_purchase_timestamp],
+        orders[order_delivered_customer_date],
+        DAY
+    )
+)
+```
+
+
+## Orders by Category
+```text
+Orders by Category =
+DISTINCTCOUNT(order_items[order_id])
+```
+
+## Total Sellers
+```text
+Total Sellers =
+DISTINCTCOUNT(order_items[seller_id])
+```
+
+## 💡 Business Insights
+
+The dashboard is designed to help stakeholders answer important business questions such as:
+
+1. Revenue Performance
+
+Revenue trends can be monitored over time to identify periods of growth and changes in sales performance.
+
+2. Product Category Performance
+
+Comparing revenue and order volume helps identify categories that are driving sales and categories that may require additional attention.
+
+3. Geographic Performance
+
+State-level analysis highlights regions contributing strongly to revenue and helps identify geographic differences in business performance.
+
+4. Seller Performance
+
+Seller-level revenue analysis helps identify the highest-contributing sellers and understand seller concentration within the marketplace.
+
+5. Customer Experience
+
+Customer review scores provide an indication of customer satisfaction and can be compared against revenue and order volume.
+
+6. Delivery Performance
+
+Average delivery time by state helps identify regions where logistics performance may require improvement.
+
+7. Business Opportunities
+
+Combining revenue, order volume, customer ratings, and delivery metrics helps identify areas where the business can:
+
+Improve customer experience
+Reduce delivery delays
+Improve product performance
+Support high-performing sellers
+Focus on high-potential categories
+Investigate high-revenue categories with lower customer satisfaction
+
+## 📷 Dashboard Preview
+Executive Overview
+
+Customer & Business Insights
+
+## 📁 Project Structure
+
+```text
+
+olist-ecommerce-sales-business-analysis/
+│
+├── README.md
+│
+├── sql/
+│   └── olist_ecommerce_analysis.sql
+│
+├── powerbi/
+│   └── olist_ecommerce_dashboard.pbix
+│
+└── screenshots/
+    ├── executive_overview.png
+    └── business_insights.png
+```
+
+## 🚀 How to Use
+
+1. PostgreSQL
+
+Create a PostgreSQL database and import the Olist dataset tables.
+
+Run the SQL file:
+
+sql/olist_ecommerce_analysis.sql
+
+The SQL file contains the business analysis queries used in this project.
+
+2. Power BI
+
+Open:
+
+powerbi/olist_ecommerce_dashboard.pbix
+
+If necessary, update the PostgreSQL connection settings according to your local environment.
+
+The dashboard contains two pages:
+
+E-Commerce Sales & Performance Overview
+Customer & Business Insights
+
+
+## 🧠 Skills Demonstrated
+
+This project demonstrates practical skills in:
+
+SQL & Database Analysis
+PostgreSQL
+Joins
+Aggregations
+GROUP BY
+ORDER BY
+DISTINCTCOUNT
+Date-based analysis
+Business KPI calculations
+Customer segmentation
+Performance analysis
+Power BI
+Data modeling
+Relationships
+Power Query
+DAX
+KPI cards
+Bar charts
+Line charts
+Scatter plots
+Slicers
+Cross-filtering
+Synchronized slicers
+Interactive dashboards
+Business Analytics
+Revenue analysis
+Customer analysis
+Product analysis
+Seller analysis
+Geographic analysis
+Operational analysis
+Customer experience analysis
+Business opportunity identification
+
+## 📌 Important Analytical Consideration
+
+An order can contain multiple product items. Therefore, when calculating category-level order volume, distinct order IDs are used instead of simply counting rows from the order_items table.
+
+For example:
+
+COUNT(DISTINCT oi.order_id)
+
+This prevents a single order containing multiple products from being counted multiple times.
+
+
+## 🎯 Project Outcome
+
+This project demonstrates how raw e-commerce data can be transformed into a practical business intelligence solution using SQL and Power BI.
+
+The final solution combines:
+
+Data → SQL Analysis → Business KPIs → Interactive Dashboard → Business Insights
+
+The project is designed from a business decision-making perspective, rather than focusing only on technical data exploration.
+
+## 👤 Author
+
+Abhishek Verma
+
+MSc Data Science & Machine Learning
+Carl von Ossietzky Universität Oldenburg, Germany
+
+## Technical Skills
+
+Python | SQL | PostgreSQL | Power BI | DAX | Excel | Power Query | Data Analysis | data Visualization
+
+⭐ Project Focus
+
+E-Commerce Analytics | Business Intelligence | SQL | PostgreSQL | Power BI | DAX
+
+
+### बस ये structure रखना
+
+```text
+olist-ecommerce-sales-business-analysis/
+│
+├── README.md
+├── sql/
+│   └── olist_ecommerce_analysis.sql
+├── powerbi/
+│   └── olist_ecommerce_dashboard.pbix
+└── screenshots/
+    ├── executive_overview.png
+    └── business_insights.png
+```
